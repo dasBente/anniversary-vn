@@ -82,7 +82,7 @@ label intro_day_1_4:
     scene bg bedroom_night with fade
 
     show petra default at spread(4, 1)
-    show rosemi default at spread(4, 2)
+    show rosemi default at spread(4, 2), rosemi_bump
     show selen happy at spread(4, 3)
     show nina happy at spread(4, 4)
 

@@ -23,13 +23,13 @@ label intro_day_1_2:
     rosemi "You too, Petra! Good luck with your studies." 
     selen "Catch ya later!" 
 
-    hide selen
-    hide rosemi
+    hide selen with dissolve
+    hide rosemi with dissolve
 
     nina "Now that we're finally done with breakfast, let's get going."
     petra "... mhm." 
 
-    scene bg bedroom
+    scene bg bedroom with fade
 
     show petra thinking at left
     show nina default at right

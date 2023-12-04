@@ -6,6 +6,7 @@ label credits:
     pause 100
     pause
     hide screen credit_screen
+    return
 
 init python:
     header_size = 40
@@ -16,7 +17,7 @@ init python:
         {
             "title": "Art & VFX",
             "names": [
-                "Jangarie", "Dokokanofry", "Nashinoko", "Shizo", "LEI/Mika",
+                "Jangarie", "DokokanoFry", "Nashinoko", "Shizo", "LEI/Mika",
                 "LunaNoctuArts", "Zarasaru", "UnfamousRadish", "Alan/Kollin",
                 "Shiki", "cottoncandyFRIZZ", "mari", "LuvTheseStuff", "Azuremia",
                 "l_yth", "Amechi", "Gitsoone", "Capricious"
@@ -128,7 +129,7 @@ screen credit_screen:
                 size 80
                 xalign 0.5
 
-            text "If you have time, check out the Community Messages section in the main menu!":
+            text "If you have time, check out the Community Messages section in the main menu!\n\n{size=20}{color=#888888}(Click to return to the main menu){/color}{/size}":
                 font "gui/fonts/Quicksand-Bold.ttf"
                 color "#ffffff"
                 size 40

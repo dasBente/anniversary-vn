@@ -124,7 +124,7 @@ label intro_day_1_3:
     petra "... !" 
     petra "W-what was that?" 
 
-    show reimu default at outer_left
+    show reimu default at outer_left with dissolve
 
     petra "(Wait, is that a person?)"
 
@@ -372,11 +372,12 @@ label intro_day_1_3:
 
     # Blocking: Nina sprite appears left of screen as Petra and Reimu's sprites move to the right to make room
     # Blocking: Nina's sprite is a bit further away from Petra and Reimu's sprites, here Petra and Reimu's sprites are on the right, Nina is on the far left
-    show nina happy at left:
-        xzoom -1
-
     show petra at slightright
-    show reimu at bump_right(200), outer_right
+    show reimu: # at bump_right(200), outer_right
+        easein 1.0 xpos 0.9
+
+    show nina happy at left with dissolve:
+        xzoom -1
 
     nina "Petra! There you are!" 
 
@@ -392,7 +393,7 @@ label intro_day_1_3:
 
     # Reimu's sprite quickly moves close to Nina 
     show reimu angry:
-        linear 0.25 xpos 0.7
+        linear 0.25 xpos 0.5
     
     reimu "Y-Yes! It's me! I'm Reimu!"
     reimu "You know me!?" 
@@ -459,11 +460,12 @@ label intro_day_1_3:
     rosemi "Petra! Nina! There you are." 
 
     # Blocking: Selen and Rosemi sprites appear on screen from the left, shuffle all other sprites right a little, pan out if necessary
+    scene bg garden_night_glowing with fade
     show petra default at spread(5, 5)
     show reimu angry at spread(5, 4)
     show nina worried at spread(5, 3)
-    show selen worried at spread(5, 1)
-    show rosemi worried at spread(5, 2), rosemi_bump
+    show selen worried at spread(5, 1) with dissolve
+    show rosemi worried at spread(5, 2), rosemi_bump with dissolve
 
     selen "What's going on h-"
 

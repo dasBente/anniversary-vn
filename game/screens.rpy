@@ -320,6 +320,11 @@ transform qm_hide:
     xpos 0
     linear 0.3 xpos -760
 
+style quick_menu_button:
+    color "#ffffff"
+    hover_color "#ffae42"
+    selected_color "#ffffff"
+
 screen quick_menu():
 
     ## Ensure this appears on top of other screens.
@@ -332,13 +337,13 @@ screen quick_menu():
 
             has hbox:
                 style_group "quick"
-                textbutton _("Save") action ShowMenu('save')
-                textbutton _("Load") action ShowMenu('load')
-                textbutton _("Log") action ShowMenu('history')
-                textbutton _("Settings") action ShowMenu('preferences')
-                textbutton _("Auto") action Preference("auto-forward", "toggle")
-                textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
-                textbutton _("Main") action MainMenu()
+                textbutton _("Save") action ShowMenu('save') text_style "quick_menu_button"
+                textbutton _("Load") action ShowMenu('load') text_style "quick_menu_button"
+                textbutton _("Log") action ShowMenu('history') text_style "quick_menu_button"
+                textbutton _("Settings") action ShowMenu('preferences') text_style "quick_menu_button"
+                textbutton _("Auto") action Preference("auto-forward", "toggle") text_style "quick_menu_button"
+                textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True) text_style "quick_menu_button"
+                textbutton _("Main") action MainMenu() text_style "quick_menu_button"
                 imagebutton auto "gui/overlay/quickmenu_open_arrow_%s.png" action [SetVariable("quick_menu_open", True), SetVariable("first_load", False)]
 
     if quick_menu_open and not first_load:
@@ -347,13 +352,13 @@ screen quick_menu():
 
             has hbox:
                 style_group "quick"
-                textbutton _("Save") action ShowMenu('save')
-                textbutton _("Load") action ShowMenu('load')
-                textbutton _("Log") action ShowMenu('history')
-                textbutton _("Settings") action ShowMenu('preferences')
-                textbutton _("Auto") action Preference("auto-forward", "toggle")
-                textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
-                textbutton _("Main") action MainMenu()
+                textbutton _("Save") action ShowMenu('save') text_style "quick_menu_button"
+                textbutton _("Load") action ShowMenu('load') text_style "quick_menu_button"
+                textbutton _("Log") action ShowMenu('history') text_style "quick_menu_button"
+                textbutton _("Settings") action ShowMenu('preferences') text_style "quick_menu_button"
+                textbutton _("Auto") action Preference("auto-forward", "toggle") text_style "quick_menu_button"
+                textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True) text_style "quick_menu_button"
+                textbutton _("Main") action MainMenu() text_style "quick_menu_button"
                 imagebutton auto "gui/overlay/quickmenu_closed_arrow_%s.png" action [SetVariable("quick_menu_open", False)]
 
     if not quick_menu_open and not first_load:
@@ -430,8 +435,10 @@ screen navigation():
 
         textbutton _("Settings") action ShowMenu("preferences")
 
-        textbutton _("Credits") action ShowMenu("credits")
+        textbutton _("Credits") action Start("credits")
 
+        textbutton _("Community Messages") action ShowMenu("community_messages")
+        
         #if main_menu:
         #    textbutton _("Gallery") action ShowMenu("gallery")
 
@@ -679,13 +686,15 @@ screen about():
         vbox:
 
             label "[config.name!t]"
-            text _("Version [config.version!t]\n")
+            text "Version [config.version!t]\n":
+                color "#ffffff"
 
             ## gui.about is usually set in options.rpy.
             if gui.about:
                 text "[gui.about!t]\n"
 
-            text _("Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]")
+            text "Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]":
+                color "#ffffff"
 
 
 style about_label is gui_label
@@ -1032,7 +1041,7 @@ screen history_menu(title, scroll=None, yinitial=0.0):
 
                         vbox:
                             transclude
-
+                            
                 elif scroll == "vpgrid":
 
                     vpgrid:
@@ -1115,15 +1124,13 @@ screen history():
         for h in _history_list:
 
             window:
-
                 ## This lays things out properly if history_height is None.
                 has fixed:
                     yfit True
 
                 if h.who:
-
                     label h.who:
-                        style "history_name"
+                        # style "history_name"
                         substitute False
 
                         ## Take the color of the who text from the Character, if
