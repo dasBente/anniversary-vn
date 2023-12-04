@@ -179,7 +179,7 @@ label intro_day_1_4:
     show selen happy
     selen "Absolutely! And I'll be the first to arrive this time." 
 
-    # Ember Happy bark sfx 
+    play sound "sfx/ember_bark.wav" volume 0.75
     ember "Arf!" 
 
     show selen worried
@@ -191,7 +191,8 @@ label intro_day_1_4:
     scene bg bedroom_night with fade
 
     show petra default at left
-    # Pomf sfx 
+
+    play sound "sfx/pomf.wav"
     petra "..." 
 
 
@@ -203,6 +204,7 @@ label intro_day_1_4:
     petra "... " 
     petra "Losing all of your memories…" 
 
+    # We'll just add this in the full version
     # Can we insert a ''Flashback'' here? Like show screenshots or images of previous scenes throughout the day? I was thinking of screenshots of the time Nina greeted Petra in the morning, screenshot of the moment where Ember was nibbling on her fish hair clip, all of them having breakfast together, then Petra seeing the flower patch present. It's supposed to be like, Petra suddenly remembering good memories, thinking about her own set of memories she doesn't want to forget.
     # Day 1 Scene Montage
     # I'll see if I can cut something together
@@ -215,7 +217,7 @@ label intro_day_1_4:
     show petra softsadsmile
     petra "Even though it hasn't been that long... I guess I'd be sad too." 
 
-    # Scene : fades to a black screen, as if Petra is closing her eyes and falling asleep
+    show black with fade
 
     petra ".... zzz" 
 

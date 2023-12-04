@@ -63,10 +63,13 @@ label intro_day_1_3:
 
     # walking sfx (still indoors, in the Rehab center)
 
+    play sound "sfx/footsteps.wav" volume 0.75
+
     scene bg garden_night with fade
 
     petra "..." 
-    # stepping on grass sfx 
+    
+    play sound "sfx/footsteps_grass.mp3" volume 0.75
     petra "(... such a nice breeze.)"
     petra "(But being here on my own... It's a little lonely.)"
     petra "..." 
@@ -88,7 +91,7 @@ label intro_day_1_3:
 
     # Scene: blue glowing flowers from cg or extra art (if we can) cut-in or extra BG not sure
     # I'll check in with Azu to see if we can do that
-    scene bg garden_night_glowing
+    scene bg garden_night_glowing with fade
     
     petra "Whoa it's... beautiful!" 
 
@@ -108,11 +111,13 @@ label intro_day_1_3:
 
     show petra default
     petra "..."
-    # bush leaves rustling sfx
 
+    play sound "sfx/bush_rustling_1.wav"
     petra "Huh?" 
-    # bush leaves rustling 
+    
+    play sound "sfx/bush_rustling_2.wav"
     petra "... is anyone there?" 
+
     # Blocking: Petra's sprite moves left to right and again right to left 
 
     show petra shocked
@@ -134,7 +139,7 @@ label intro_day_1_3:
     petra "(Hide!!!)"
 
     # Blocking: Petra's sprite moves to the far right of the screen 
-    # bush leaves rustling sfx
+    play sound "sfx/bush_rustling_3.wav"
 
     reimu "... where... am I?"
     # Blocking: Reimu's sprite moves a bit closer to the center, slowly (If you can make it slow that would be great but if you can't, that's fine). So the sprite is somewhere around center-left. 
@@ -150,41 +155,54 @@ label intro_day_1_3:
     show petra terrified # should exist now
     
     # Blocking: Petra's sprite moves further right to the edge of the screen a bit of her sprite is off screen 
-    # bush leaves rustling sfx (in time with her sprite moving) 
+    play sound "sfx/bush_rustling_1.wav"
     petra "..."
 
     # Blocking: Petra's sprite moves even further right, now half or 1/4 of her sprite can't be seen 
-    # bush leaves rustling sfx (in time with her sprite moving) 
+    play sound "sfx/bush_rustling_2.wav"
 
     petra "(I'm almost out…)" 
 
     show petra shocked
-    petra "... ! " 
+    petra "... ! "
+    
+    play sound "sfx/twig_snap.wav"
     petra "(Huh!? Something's stuck to my foot!?)"
-    # vines breaking or twig snapping sfx along with the above dialogue
 
-    petra "Buaaah!!" 
-    # bush leaves rustling sfx (along with the above dialogue) 
+    play sound "sfx/bush_rustling_3.wav"
+    petra "Buaaah!! {p=1.0}{nw}" 
 
-    # After the above noise, a "thump" kind of noise happens to show Petra hit the ground. Sfx note.
-    # Blocking: Petra's sprite moves down a few centimeters, to show that she's on the ground 
+    show petra shocked at right
+    show petra shocked:
+        yoffset 0
+        easeout 0.5 yoffset 200
+
+    play sound "sfx/thud.mp3"
 
     # Blocking: pan screen towards Petra, sprite is now center-right. 
 
-    show reimu determined
     reimu "...!" 
     reimu "Was that a— Oh, a person!"
     # Blocking: Reimu's sprite moves to the center, close to Petra 
 
+    show reimu determined:
+        linear 2.0 xpos 0.3
+
     show petra terrified # should exist now
     petra "(Oh no oh no oh no! She's coming towards me!!)" 
-    # Blocking: Petra's sprite trembles 
+
+    # petra trembling
+    show petra terrified:
+        linear 0.1 xoffset 5
+        linear 0.1 xoffset -5
+        repeat
 
     show reimu default
     reimu "... did you trip? Are you okay?" 
 
-    show petra shocked
-    # Blocking: Petra stops trembling 
+    show petra shocked:
+        xoffset 0
+
     petra "... !?" 
     petra "(...''are you okay?'' ...why is she asking me that!?!?!)"
 
@@ -204,13 +222,17 @@ label intro_day_1_3:
     petra "..."
     reimu "You don't believe me... Rude."
 
-    # Blocking: Reimu's sprite moves to the far left 
+    show reimu default:
+        linear 2.0 xpos -0.1
 
     show petra shocked
     petra "(... what the hell just happened…?)"
     petra "(Did she just– She just called me rude and left?? I–)" 
 
-    # Blocking: Reimu's sprite flips horizontally back and forth, as if she's looking around 
+    show reimu default:
+        xzoom -1
+        pause 2.0
+        repeat
 
     show petra terrified # should exist now
     petra "(She's not doing anything to me? She really left me alone...?)"
@@ -223,15 +245,24 @@ label intro_day_1_3:
 
     show petra default
     petra "(I guess there is some truth to what she's saying…)"
-    # Blocking: Petra's sprite moves back to its original height, to show she's standing again
+
+    show petra default:
+        easein 0.5 yoffset 0 # stand up again
 
     petra "(I'd rather not test my luck today though... I better try to leave while she's still distracted.)"
-    # Blocking: Petra's sprite moves a few millimeters to the right of the screen, kinda to show she took a step
 
-    # Blocking: Reimu's sprite flips to face petra
+    show petra default: # step back
+        xoffset 0
+        linear 0.5 xoffset 50
+
+    show reimu default:
+        xzoom 1
+    
     reimu "Hey! Rude Girl! Before you leave…" 
 
-    show petra shocked
+    show petra shocked:
+        xzoom -1
+
     petra "Huh!??" 
     petra "(What now?! Please! I just wanna go back to my room!)"
 
@@ -242,7 +273,7 @@ label intro_day_1_3:
     show petra default
     petra "... the f-flowers?"
 
-    scene cg reimu_intro 
+    scene cg reimu_intro with fade
 
     reimu "Yes... I want to know about them." 
     reimu "... do you know who planted these flowers?"
@@ -256,9 +287,8 @@ label intro_day_1_3:
 
     scene bg garden_night
 
-    show petra anxious at slightleft
-    show reimu sad at slightright 
-    # Blocking: Petra and Reimu's sprite are at the center of the screen, they are standing next to each other, like at talking distance
+    show petra anxious at slightright
+    show reimu sad at slightleft 
 
     petra "(Why would the person planting the flowers recognize her? Does she live in the garden or something?!)"
     petra "(No, I would have been told if we had a resident ghost here... I think?)"  
@@ -321,14 +351,12 @@ label intro_day_1_3:
     petra "(But she's smiling... I guess she must've actually been fond of her home…)" 
     petra "H-Hey-"
 
-    # Blocking: Nina, Selen and Rosemi's sprites have not appeared yet, you only hear their voices
-
     rosemi "Petra!!" 
     petra "Fweh?" 
     selen "Petra, where are you?!!" 
     nina "Petraaaa!!" 
 
-    # bush leaves rustling sfx 
+    play sound "sfx/bush_rustling_2.wav"
 
     show petra shocked
     petra "... oh, they're looking for me!"
@@ -340,11 +368,13 @@ label intro_day_1_3:
     show reimu default
     reimu "...??"
 
-    # bush leaves rustling sfx 
+    play sound ["sfx/bush_rustling_1.wav", "<silence 0.5>", "sfx/bush_rustling_3.wav"]
 
     # Blocking: Nina sprite appears left of screen as Petra and Reimu's sprites move to the right to make room
     # Blocking: Nina's sprite is a bit further away from Petra and Reimu's sprites, here Petra and Reimu's sprites are on the right, Nina is on the far left
-    show nina happy at left
+    show nina happy at left:
+        xzoom -1
+
     show petra at slightright
     show reimu at bump_right(200), outer_right
 
@@ -360,10 +390,10 @@ label intro_day_1_3:
     show reimu determined
     reimu "... !!" 
 
+    # Reimu's sprite quickly moves close to Nina 
     show reimu angry:
         linear 0.25 xpos 0.7
     
-    # Reimu's sprite quickly moves close to Nina 
     reimu "Y-Yes! It's me! I'm Reimu!"
     reimu "You know me!?" 
     reimu "You really know me!? Can you tell me what happened?? Who am I? Where am I from?!" 
@@ -415,7 +445,10 @@ label intro_day_1_3:
     show reimu angry
     reimu "And when is that?! Why not now!? Just tell me already!!" 
 
-    # Nina's sprite moves closer to Reimu 
+    show nina worried:
+        zoom 1.5
+        easein 0.5 xoffset 50
+
     nina "Listen, I can't give you the answers you want. You need to wait for the right time..."
 
     reimu "The right time?! What do you mean by ''the right time''?! That doesn't mean anything!!"

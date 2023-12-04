@@ -44,7 +44,7 @@ label intro_day_1_bad:
     show nina worried
     nina "What do you mean Petra? Is everything okay? Did we do something wrong?" 
 
-    play music "bgm/petra_theme.mp3" fadein 0.5
+    play music "bgm/petra_theme.wav" fadein 0.5
     show petra annoyed
     petra "..." 
     petra "... I'm not a baby, don't treat me like one." 

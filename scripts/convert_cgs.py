@@ -25,4 +25,5 @@ for f in folders:
         ratio = max(w_ratio, h_ratio)
         
         img = img.resize((int(w * ratio), int(h * ratio)), resample=Image.BICUBIC)
-        img.save(join(target_dir, f"{file.split(".")[0]}.webp"), "WEBP", quality=100)
+        img.save(join(target_dir, f"{file.split('.')[0]}.webp"), "WEBP", quality=100)
+        

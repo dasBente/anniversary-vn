@@ -123,3 +123,5 @@ CubismSdkForNative-4-*.zip
 
 # Web build
 progressive_download.txt
+
+.venv

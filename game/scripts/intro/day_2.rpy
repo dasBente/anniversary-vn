@@ -225,10 +225,12 @@ label intro_day_2:
 
     menu:
         "Selen":
-            jump selen_intro
+            call selen_intro
         "Rosemi":
-            jump rosemi_intro
+            call rosemi_intro
         "Reimu":
-            jump reimu_intro
+            call reimu_intro
         "No one":
-            jump angst_intro
+            call angst_intro
+
+    jump credits

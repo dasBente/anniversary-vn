@@ -18,24 +18,39 @@ label intro_day_1:
 
     petra "(Well… Either way, I shouldn't stay in bed all day.)"
 
-    # Put this over the animation instead?
-    play sound ["sfx/sheets_rustling.mp3", "<silence .5>", "sfx/door open.mp3"]
-    pause 5
+    window hide
+    play sound "sfx/sheets_rustling.mp3"
+    
+    show petra default at flip, left
+    pause 1
+    show petra default at flip, left
+    show petra default:
+        xoffset 0
+        linear 1.0 xoffset 400
+
+    pause 2
+
+    show petra default at flip, left
+    pause 1
+
+    play sound "sfx/door_open.wav"
+    show petra with dissolve
+    pause 1
 
     show bg bedroom with fade
 
-    play sound "sfx/door knock.mp3"
+    show petra default at left
+    play sound "sfx/door_knock.wav"
     pause 2
 
-    show petra default at left
     petra "Huh?!"
     petra "(Oh, it must be–)"
 
-    play sound "sfx/door open.mp3"
+    play sound "sfx/door_open.wav"
     pause 2
 
     stop music
-    play music "bgm/meet_the_characters.mp3" fadein 1.0 volume 0.75 #this isn't playing for me for some reason when I run it
+    play music "bgm/meet_the_characters.mp3" fadein 1.0 volume 0.75 # TODO: this isn't playing for me for some reason when I run it
     show petra at left
     show nina excited at right
     
@@ -102,7 +117,7 @@ label intro_day_1:
     petra "(Nina is warm too)"
 
     scene bg hallway with fade
-    play sound "ambient/clock_ticking.mp3" volume 0.5 # this sound effect is getting cut short too after playing for a breif moment
+    play sound "ambient/clock_ticking.wav" volume 0.5 # TODO: this sound effect is getting cut short too after playing for a breif moment
 
     # flip sprites to face left
     show petra default at center, flip
@@ -113,7 +128,7 @@ label intro_day_1:
 
     # Scene: Selen Intro CG START
     # Selen greeting sfx
-    scene cg selen_intro with fade #implemented Selen intro CG
+    scene cg selen_intro with fade
     hide nina
     hide petra #hiding sprites for the sake of the CG
 
@@ -121,7 +136,7 @@ label intro_day_1:
     nina "Good morning, Selen!" 
     petra "... good morning" 
 
-    # Dog happy bark sfx or some other noise that could be used to express a cheerful ''good morning'' from a dragon
+    play sound "sfx/ember_bark.wav"
     ember "Gawr!!"
     
     nina "Haha, good morning to you too, Ember!"
@@ -151,8 +166,8 @@ label intro_day_1:
     petra "Can…"
     petra "Can I have the– Fweh?"
 
+    play sound "sfx/ember_chomp.wav" volume 0.75
     ember "*chomp chomp*"
-    # chomp sfx or nibble sfx (cause Ember is nibbling on Petra's hair clip and trying to eat it)
 
     show petra shocked
     
@@ -170,9 +185,9 @@ label intro_day_1:
     show selen happy
 
     nina "That's right, Ember please pick a food from the table not from Petra's hair"
-    ember "Oouuff" 
 
-    # Dog whimpering sfx
+    play sound "sfx/ember_whimper.wav" volume 0.5
+    ember "Oouuff" 
 
     show petra shocked
 
@@ -200,12 +215,10 @@ label intro_day_1:
     show petra at slightright
     show petra at flip
 
-    # make all face left and move right
     nina "Aww Honey! Thank you!" 
     selen "Thanks, Rosemi." 
     petra "T-Thank you…"
 
-    # Rosemi's sprite appears on screen from the side the other sprites are facing
     # Rosemi greeting sfx
 
     # move in from left
@@ -237,7 +250,6 @@ label intro_day_1:
     # Scene: Rosemi Intro CG END 
     scene bg cafeteria with fade #transition back out of Rosemi CG
 
-    # TODO: equidistant spacing, left to right Rosemi, Selen, Nina, Petra
     show rosemi default at spread(4, 1), rosemi_bump
     show selen default at spread(4, 2)
     show nina excited at spread(4, 3)
@@ -265,7 +277,7 @@ label intro_day_1:
     show rosemi default
     rosemi "And there's more types of dishes to pick from too!"
 
-    show petra deadpan # annoyed (if Deadpan stare is not available)
+    show petra deadpan
     petra "(Well having variety is nice but... Peter has some... weird food tastes…)" 
     petra "(... he keeps saying that cooking school taught him those recipes, but I wonder how much of it he actually follows…)"
     petra "(At least it's easy to tell the good ones apart from the weird ones…)"
@@ -335,8 +347,6 @@ label intro_day_1:
     petra "(What kind of present do you even get for… a one-month anniversary… at a rehab center…?"
     petra "(I don't know what to say…)"
 
-    # Choice Screen 
-
     menu present_choices:
         # This option does not increase or decrease Petra's affection with any character! The dialogues triggered by this option are in [Day 1, part 1.a]. 
         "Th-Thank you…":
@@ -345,5 +355,4 @@ label intro_day_1:
         # This option does not increase or decrease Petra's affection with any character either, but it does change what dialogue appears in future scenes! The dialogues triggered by this option are in [Day 1, part 1.b].
         "I-I'm not a little kid, you know!":
             $ prologue_rejection_flag = True
-            jump intro_day_1_bad # Petra's theme in day 1 bad also has issues cause it starts playing and then immediately stops
-                                # it might just be something on my end, as long as it works for you, it's probably fine
+            jump intro_day_1_bad

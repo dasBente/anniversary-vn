@@ -46,8 +46,7 @@ label intro_day_1_2:
 
     if prologue_rejection_flag:
         stop music fadeout 1.0
-        # BGM ambience
-
+        play music "ambient/cicadas.wav" fadein 1.0 volume 0.1 fadeout 1.0
         show petra anxious
         petra "... N-No! I-!!"
 
@@ -72,8 +71,8 @@ label intro_day_1_2:
         petra "(I can do this myself!)"
 
         show petra default
-        
-        play music "bgm/petra_theme.mp3" fadein 1.0
+
+        play music "bgm/petra_theme.wav" fadein 1.0
         petra "(I just need to... remember how to do this again...)"
 
         show petra sad # anxious/sad

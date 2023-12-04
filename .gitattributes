@@ -7,3 +7,7 @@
 *.jpg filter=lfs diff=lfs merge=lfs
 *.png filter=lfs diff=lfs merge=lfs
 *.webp filter=lfs diff=lfs merge=lfs
+
+*.webm binary
+*.ogg binary
+*.mp3 binary
