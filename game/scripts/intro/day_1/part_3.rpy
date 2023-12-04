@@ -1,5 +1,6 @@
 label intro_day_1_3:
     scene bg bedroom_night with fade
+    play music "bgm/petra_theme.wav"
 
     show petra default at left
     # Yawn SFX
