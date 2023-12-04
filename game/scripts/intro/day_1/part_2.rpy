@@ -115,7 +115,7 @@ label intro_day_1_2:
 
     scene bg bedroom
 
-    show petra sad at shy
+    show petra shy at left
     show nina happy at right
     nina "Good job, Petra! You're learning pretty fast" 
     nina "Your academic progress is on track with our schedule, and your communication skills have improved a lot!" 
